@@ -25,15 +25,15 @@
                   />
             </div>
           </td>
-          <td><p class="fw-bold mb-1">{{$post['title']}} </p></td>
+          <td><p class="fw-bold mb-1">{{$post->title}} </p></td>
           <td>
-            <p class="fw-normal mb-1">{{$post['body']}}</p>
+            <p class="fw-normal mb-1">{{$post->body}}</p>
           </td>
           <td>
-            <p class="text-muted mb-0">{{$post['creator']}}</span>
+            <p class="text-muted mb-0">{{$post->creator}}</span>
           </td>
           <td>
-           <form action="{{route('posts.destroy',$post['id'])}}" method="post" class="d-inline">
+           <form action="{{route('posts.destroy',$post->id)}}" method="post" class="d-inline">
             @csrf
             @method('delete')
              <button rel='tooltip' class='btn btn-danger btn-just-icon btn-sm' data-original-title='' title='' type="submit">
@@ -41,10 +41,10 @@
              </button>
             
           </form> 
-          <a rel='tooltip' class='btn btn-success btn-just-icon btn-sm' data-original-title='' title='' href="/posts/{{$post['id']}}/edit">
+          <a rel='tooltip' class='btn btn-success btn-just-icon btn-sm' data-original-title='' title='' href="/posts/{{$post->id}}/edit">
               <i class='material-icons'>edit</i>
           </a>
-          <a rel='tooltip' class='btn btn-secondary btn-just-icon btn-sm' data-original-title='' title='' href="/posts/{{$post['id']}}"
+          <a rel='tooltip' class='btn btn-secondary btn-just-icon btn-sm' data-original-title='' title='' href="/posts/{{$post->id}}"
           {{-- {{route('posts.show',$user['id'])}} --}}>
             <i class='material-icons'>visibility</i>
         </a>
@@ -53,4 +53,8 @@
         @endforeach
     </tbody>
   </table>
+  <div class="d-flex justify-content-center">
+    {!! $posts->links() !!}
+</div>
+
 @endsection

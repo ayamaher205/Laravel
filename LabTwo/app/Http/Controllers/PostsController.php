@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
@@ -16,9 +18,10 @@ class PostsController extends Controller
         }
         return null;
     }
-    public function index(){
-        $posts = Post::all();
-        return view("index" ,["posts"=> $posts]);
+    public function index()
+    {
+        $posts = Post::paginate(5);
+        return view("index" ,compact('posts'));
     }
     public function create(){
         return view("create");
